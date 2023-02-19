@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Feed from './pages/Feed';
+import Channel from './pages/Channel';
+import Search from './pages/Search';
+import Navbar from './pages/Navbar';
+import VideoDetail from './components/VideoDetail';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+
+      <Routes>
+        <Route path='/' element={<Feed />} />
+        <Route path='/video/:id' element={<VideoDetail />} />
+        <Route path='/channel/:id' element={<Channel />} />
+        <Route path='/search/:searchTerm' element={<Search />} />
+      </Routes>
+    </Router>
   );
 }
 
